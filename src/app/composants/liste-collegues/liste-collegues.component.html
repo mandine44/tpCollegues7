@@ -1,0 +1,14 @@
+<ng-container *ngIf="collegues | async as tabCols; else colAbsent">
+
+  <p *ngIf="tabCols.length === 0">
+    Aucune donnée !
+  </p>
+  <app-collegues *ngFor="let collegueVenantDuTableau of tabCols" [col]="collegueVenantDuTableau"></app-collegues>
+
+</ng-container>
+
+<ng-template #colAbsent>
+  <p>
+    Chargement...
+  </p>
+</ng-template>

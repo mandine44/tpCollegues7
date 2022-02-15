@@ -1,0 +1,7 @@
+<div *ngIf="col">
+  <img src="{{ col.photo }}" alt="" />
+  <p>{{ col.pseudo | uppercase}}</p>
+  <p>{{ col.score  | score}}</p>
+
+  <app-avis (avis)="traiterEvtAvis($event)" [jaimeActif]="btnJaimeActif" [jedetesteActif]="btnJedetesteActif"></app-avis>
+</div>

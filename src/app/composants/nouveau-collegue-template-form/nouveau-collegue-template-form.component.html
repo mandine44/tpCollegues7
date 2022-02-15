@@ -1,0 +1,38 @@
+<form appNomPrenomValidator #colForm="ngForm">
+  Pseudo <input appPseudoValidator type="text" #pseudo="ngModel" name="pseudo" [(ngModel)]="nouveauCollegue.pseudo" required minlength="2">
+  <p *ngIf="pseudo.dirty && pseudo.invalid">
+    pseudo invalide
+  </p>
+
+
+
+  Nom <input type="text" name="nom" [(ngModel)]="nouveauCollegue.nom" required minlength="2">
+
+  <p *ngIf="colForm.controls['nom'] && colForm.controls['nom'].dirty && colForm.controls['nom'].invalid">
+    nom invalide
+  </p>
+
+  Prénom <input type="text" name="prenom" [(ngModel)]="nouveauCollegue.prenom" required>
+
+  <p *ngIf="colForm.controls['prenom'] && colForm.controls['prenom'].dirty && colForm.controls['prenom'].invalid">
+    prénom invalide
+  </p>
+
+  Photo <input type="text" name="photo" [(ngModel)]="nouveauCollegue.photo" required>
+
+  <p *ngIf="colForm.controls['photo'] && colForm.controls['photo'].dirty && colForm.controls['photo'].invalid">
+    photo invalide
+  </p>
+
+  <button (click)="valider(colForm)" [disabled]="colForm.invalid">Valider</button>
+
+  <p *ngIf="colForm.errors && colForm.errors['nomPrenomIdentique']">
+    Nom et prénom identique
+  </p>
+  <p *ngIf="msgOk">
+    {{msgOk}}
+  </p>
+  <p *ngIf="msgErreur">
+    {{msgErreur}}
+  </p>
+</form>
